@@ -56,8 +56,9 @@
                 </tr>
             </table>
         </div>
-        <div class="col-xs-6" ng-show="!formSearchArtist.searchArtist.$error.required && showDescription">
-            <table class="table-responsive table-striped table-bordered">
+        <div class="col-xs-6" >
+            <div id="infoText" class="text-center" ng-show="!formSearchArtist.searchArtist.$error.required && !showDescription"><i class="fa fa-info-circle"></i> Click on an artist for more information!</div>
+            <table class="table-responsive table-striped table-bordered" ng-show="!formSearchArtist.searchArtist.$error.required && showDescription">
                 <tr>
                     <th>
                         Name:
