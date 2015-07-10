@@ -1,0 +1,116 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Spotify-Angular Example</title>
+
+    <!-- JQuery 2.1.4 -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- Angular 1.4.2 -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+
+    <!-- Bootstrap 3.3.5 CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Bootstrap 3.3.5 JS -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- FontAwesome 4.3.0 -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Angular Spotify JS : https://github.com/eddiemoore/angular-spotify-->
+    <script src="js/angular-spotify.js"></script>
+
+    <!-- My JS -->
+    <script src="js/script.js"></script>
+
+</head>
+<body>
+<main class="container-fluid" ng-app="spotifyApp" ng-controller="primary">
+    <div class="text-center"><h1>Spotify-Angular Example</h1><br/>
+    </div>
+    <form class="form text-center" role="form" name="formSearchArtist" novalidate="true">
+        <div class="row">
+            <div class="col-xs-6 form-group center-block">
+                    <input type="text" class="form-control" placeholder="Search for an Artist" name="searchArtist" ng-model="inputArtist" ng-change="searchArtist()" required>
+            </div>
+        </div>
+    </form>
+    <div class="row ">
+        <div class="col-xs-6">
+            <table class="table-responsive table-striped table-bordered">
+                <tr ng-repeat="element in rawArtistList" ng-click="artistSelected(element.id)" ng-class="{ 'selectedRow' : element.id == returnArtistId }" ng-show="!formSearchArtist.searchArtist.$error.required">
+                    <td>
+                        {{element.name}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-xs-6" ng-show="!formSearchArtist.searchArtist.$error.required && showDescription">
+            <table class="table-responsive table-striped table-bordered">
+                <tr>
+                    <th>
+                        Name:
+                    </th>
+                    <td>
+                        {{returnArtistId}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Spotify URL
+                    </th>
+                    <td>
+                        {element.external_urls.spotify}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Popularity
+                    </th>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width:70%">
+                                {element.popularity}
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Number of Followers
+                    </th>
+                    <td>
+                        {element.followers.total}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Genres
+                    </th>
+                    <td>
+                        {(array) element.genres}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Top Songs in the US
+                    </th>
+                    <td>
+                        {(array) godknowswhat}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</main>
+</body>
+</html>
+
