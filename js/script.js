@@ -41,10 +41,11 @@ ngApp.controller('primary', ['$scope', '$http', 'Spotify', function($scope, $htt
             //  Stores artist followers
             $scope.returnFollowers = artist.followers.total;
             //  Stores artist genres. If genre doesn't exist, display "Unknown/Not Listed"
-            if (artist.genres.length === 0)
-                $scope.returnGenres.push("Unknown/Not Listed");
-            else
+            if (typeof artist.genres !== 'undefined' && artist.genres.length > 0) {
                 $scope.returnGenres = artist.genres;
+            } else {
+                $scope.returnGenres = ["Unknown/Not Listed"];
+            }
         });
 
         //  Gets the artist's top tracks in the US
