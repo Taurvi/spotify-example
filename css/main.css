@@ -18,7 +18,7 @@ th {
     width: 27%
 }
 
-.progress {
+.progress, .noPadMar {
     padding: 0;
     margin: 0;
 }

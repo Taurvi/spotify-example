@@ -60,7 +60,7 @@
                         Name:
                     </th>
                     <td>
-                        {{returnArtistId}}
+                        {{returnName}}
                     </td>
                 </tr>
                 <tr>
@@ -68,7 +68,7 @@
                         Spotify URL
                     </th>
                     <td>
-                        {element.external_urls.spotify}
+                        <a ng-href="{{returnUrl}}" target="_blank">View on Spotify</a>
                     </td>
                 </tr>
                 <tr>
@@ -77,8 +77,8 @@
                     </th>
                     <td>
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width:70%">
-                                {element.popularity}
+                            <div class="progress-bar" role="progressbar" ng-style="{ 'width': returnPop + '%' }">
+                                {{returnPop}}
                             </div>
                         </div>
                     </td>
@@ -88,7 +88,7 @@
                         Number of Followers
                     </th>
                     <td>
-                        {element.followers.total}
+                        {{returnFollowers}}
                     </td>
                 </tr>
                 <tr>
@@ -96,7 +96,7 @@
                         Genres
                     </th>
                     <td>
-                        {(array) element.genres}
+                        <div class="noPadMar" ng-repeat="element in returnGenres">{{element}}</div>
                     </td>
                 </tr>
                 <tr>
@@ -104,7 +104,7 @@
                         Top Songs in the US
                     </th>
                     <td>
-                        {(array) godknowswhat}
+                        <div class="noPadMar" ng-repeat="element in returnTopSongs">{{element.name}}</div>
                     </td>
                 </tr>
             </table>
